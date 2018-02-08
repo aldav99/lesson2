@@ -1,26 +1,20 @@
-h = Hash.new()
-s = 0
-begin
-puts "Введите товар"
-pur = gets.chomp
+basket = {}
+sum = 0
+product_sum = 0
 
-if pur == "стоп" 
-	break
-end
-puts "Введите цену за единицу"
-price = gets.to_f
-puts "Введите количество"
-num = gets.to_f
-h[pur] = {price => num}
-end while true
-puts h
+loop do
+  puts "Введите товар"
+  product = gets.chomp
+  break if product == "стоп"
+  puts "Введите цену за единицу"
+  price = gets.chomp.to_sym
+  puts "Введите количество"
+  number = gets.to_f
+  basket[product] = {price => number}
+  product_sum = price.to_s.to_f * number
+  puts "Сумма за товар: #{product}-----#{product_sum}"
+  sum = sum + product_sum
+end 
 
-h.keys.sort.each do |key|
-  puts "Сумма за товар: #{key}-----"
-  h[key].each do |k1,val|  
-  	mul = k1 * val
-  	s = s + mul
-  	puts mul
-  end	
-end
-puts "Итого в корзине: #{s}"
+puts "Итого в корзине: #{sum}"
+puts "Ваша корзина: #{basket}"

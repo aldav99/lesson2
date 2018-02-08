@@ -1,9 +1,8 @@
-h = Hash.new()
-s = 1
-for i in ('a'..'z').to_a
- 	if ["a","e","i","o","u","y"].include?(i)
- 		h[i] = s
- 	end
- 	s = s + 1
+vowel_hash = {}
+vowel_arr = ["a","e","i","o","u","y"]
+('a'..'z').each_with_index do |value, index|
+  if vowel_arr.include?(value)
+    vowel_hash[value] = (index + 1)
+  end
 end
-puts h
+puts vowel_hash
